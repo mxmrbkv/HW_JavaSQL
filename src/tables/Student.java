@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Student extends AbsTable {
     public Student() throws SQLException {
-        super("student");
+        super("Student");
 
         students.add(new StudList(1, "Borzov Dmitry Alexseevich", "Man", 6689));
         students.add(new StudList(2, "Alimova Alisa Alexseevna", "Woman", 6689));
@@ -32,19 +32,20 @@ public class Student extends AbsTable {
     public void insertData() throws SQLException {
 
         for(StudList student: students) {
-            iDbExecutor.execute(String.format("insert into student values ('%d','%s', '%s', '%d');", student.getId(),
+            iDbExecutor.execute(String.format("insert into Student values ('%d','%s', '%s', '%d');", student.getId(),
                     student.getFio(), student.getSex(), student.getIdGroup()), false);
         }
     }
 
     public void dataPrintln() throws SQLException {
 
-        ResultSet students = iDbExecutor.execute("select * from student", true);
+        ResultSet students = iDbExecutor.execute("select * from Student", true);
         while(students.next()) {
             System.out.println(String.format("id = %d fio = %s sex = %s idGroup = %d", students.getInt(1),
                     students.getString(2), students.getString(3), students.getInt(4)));
 
-            // Вывод всех девочек SELECT * FROM student WHERE sex = 'woman';
+            // Вывод всех девочек -  SELECT * FROM student WHERE sex = 'woman';
+            // Вывод все id -  SELECT * FROM student WHERE id;
 
         }
     }

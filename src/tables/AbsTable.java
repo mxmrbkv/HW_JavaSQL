@@ -37,10 +37,10 @@ public abstract class AbsTable implements ITable {
 //        iDbExecutor.execute(String.format("create table %s (Id int, fio varchar(40), Sex varchar(8), Id_group int);", tableName), false);
 
         ////Создание таблицы группы
-        iDbExecutor.execute(String.format("create table %s (Id int, name_Group varchar(40), Id_curator int);", tableName), false);
+//        iDbExecutor.execute(String.format("create table %s (Id int, name_Group varchar(40), Id_curator int);", tableName), false);
 
         //Создание таблицы кураторов
-//        iDbExecutor.execute(String.format("create table %s (Id int, fio varchar(20));", tableName), false);
+        iDbExecutor.execute(String.format("create table %s (Id int, fio varchar(40));", tableName), false);
 
     }
 

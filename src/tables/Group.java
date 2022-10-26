@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Group extends AbsTable {
     public Group() {
-        super("group1");
+        super("Group_table");
 
         group.add(new GroupList(6689, "One group", 23));
         group.add(new GroupList(6690, "Two group", 24));
@@ -22,14 +22,14 @@ public class Group extends AbsTable {
     public void insertData() throws SQLException {
 
         for (GroupList group: group) {
-            iDbExecutor.execute(String.format("insert into group1 values (%d, '%s', %d);", group.getId(),
+            iDbExecutor.execute(String.format("insert into Group_table values (%d, '%s', %d);", group.getId(),
                     group.getNameGroup(), group.getIdCurator()), false);
         }
     }
 
     public void dataPrintln() throws SQLException {
 
-        ResultSet group = iDbExecutor.execute("select * from group1", true);
+        ResultSet group = iDbExecutor.execute("select * from Group_table", true);
         while(group.next()) {
             System.out.println(String.format("id = %d nameGroup = %s idCurator = %d", group.getInt(1),
                     group.getString(2), group.getInt(3)));

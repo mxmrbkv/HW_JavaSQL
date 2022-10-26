@@ -23,19 +23,19 @@ public class Main {
 
         // Создание  таблицы группы
 
-        AbsTable group = new Group();
-            group.delete();
-            group.create();
-            group.insertData();
-            group.dataPrintln();
+//        AbsTable group = new Group();
+//            group.delete();
+//            group.create();
+//            group.insertData();
+//            group.dataPrintln();
 
         // Создание таблицы куратор
 
-//        AbsTable curator = new Curator();
-//            curator.delete();
-//            curator.create();
-//            curator.insertData();
-//            curator.dataPrintln();
+        AbsTable curator = new Curator();
+            curator.delete();
+            curator.create();
+            curator.insertData();
+            curator.dataPrintln();
 
             }
     }

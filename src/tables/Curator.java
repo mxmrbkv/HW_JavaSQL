@@ -11,7 +11,7 @@ import java.util.List;
 public class Curator extends AbsTable{
 
     public Curator(){
-        super("curator");
+        super("Curator");
 
         curator.add(new CuratorList(1, "Jabovna Danna Artemovna"));
         curator.add(new CuratorList(2, "Tokunova Anna Victorovna"));
@@ -23,15 +23,15 @@ public class Curator extends AbsTable{
     public void insertData() throws SQLException {
 
         for (CuratorList curator : curator) {
-            iDbExecutor.execute(String.format("insert into curator values (%d, '%s');", curator.getId(), curator.getFio()), false);
+            iDbExecutor.execute(String.format("insert into Curator values ('%d', '%s');", curator.getId(), curator.getFio()), false);
 
         }
     }
 
     public void dataPrintln() throws SQLException {
-        ResultSet curator = iDbExecutor.execute("select * from curator", true);
+        ResultSet curator = iDbExecutor.execute("select * from Curator", true);
         while(curator.next()) {
-            System.out.println(String.format("id = %d fio = s", curator.getInt(1), curator.getString(2)));
+            System.out.println(String.format("id = %d fio = %s", curator.getInt(1), curator.getString(2)));
         }
     }
 }
