@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Student extends AbsTable {
     public Student() throws SQLException {
-        super("Student");
+        super("student");
 
         students.add(new StudList(1, "Borzov Dmitry Alexseevich", "Man", 6689));
         students.add(new StudList(2, "Alimova Alisa Alexseevna", "Woman", 6689));
@@ -29,23 +29,45 @@ public class Student extends AbsTable {
         }
     private List<StudList> students = new ArrayList<>();
 
+    public void create() throws SQLException {
+
+        ResultSet tables = iDbExecutor.execute("show tables;", true);
+        boolean isTableCreated = false;
+        while (tables.next()) {
+            if (tables.getString(1).equals("student")) {
+                isTableCreated = true;
+                break;
+            }
+        }
+
+        //Создание таблицы студентов
+        iDbExecutor.execute(String.format("create table %s (Id int, fio varchar(40), sex varchar(40), Id_group int);", "student"), false);
+    }
+
     public void insertData() throws SQLException {
 
         for(StudList student: students) {
-            iDbExecutor.execute(String.format("insert into Student values ('%d','%s', '%s', '%d');", student.getId(),
+            iDbExecutor.execute(String.format("insert into student values ('%d','%s', '%s', '%d');", student.getId(),
                     student.getFio(), student.getSex(), student.getIdGroup()), false);
         }
     }
 
     public void dataPrintln() throws SQLException {
 
-        ResultSet students = iDbExecutor.execute("select * from Student", true);
+        ResultSet students = iDbExecutor.execute("select * from Student;", true);
         while(students.next()) {
             System.out.println(String.format("id = %d fio = %s sex = %s idGroup = %d", students.getInt(1),
                     students.getString(2), students.getString(3), students.getInt(4)));
 
-            // Вывод всех девочек -  SELECT * FROM student WHERE sex = 'woman';
-            // Вывод все id -  SELECT * FROM student WHERE id;
+            // Вывести на экран информацию о всех студентах включая название группы и имя куратора -
+            // Вывести на экран количество студентов -
+            // Вывести студенток -  SELECT * FROM student WHERE sex = 'woman';
+            // Обновить данные по группе сменив куратора -
+            // Вывести список групп с их кураторами -
+            // Используя вложенные запросы вывести на экран студентов из определенной группы(поиск по имени группы) -
+            // SELECT * FROM student WHERE id_Group = '6689';
+
+
 
         }
     }

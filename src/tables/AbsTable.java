@@ -22,29 +22,6 @@ public abstract class AbsTable implements ITable {
     }
 
     @Override
-    public void create() throws SQLException {
-
-        ResultSet tables = iDbExecutor.execute("show tables;", true);
-        boolean isTableCreated = false;
-        while (tables.next()) {
-            if (tables.getString(1).equals(tableName)) {
-                isTableCreated = true;
-                break;
-            }
-        }
-
-        //Создание таблицы студентов
-//        iDbExecutor.execute(String.format("create table %s (Id int, fio varchar(40), Sex varchar(8), Id_group int);", tableName), false);
-
-        ////Создание таблицы группы
-//        iDbExecutor.execute(String.format("create table %s (Id int, name_Group varchar(40), Id_curator int);", tableName), false);
-
-        //Создание таблицы кураторов
-        iDbExecutor.execute(String.format("create table %s (Id int, fio varchar(40));", tableName), false);
-
-    }
-
-    @Override
     public void delete() throws SQLException {
         iDbExecutor.execute(String.format("drop table if exists %s", tableName), false);
     }

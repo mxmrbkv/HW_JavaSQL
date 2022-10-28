@@ -15,19 +15,19 @@ public class Main {
 
         // Создание таблицы студентов
 
-//        AbsTable student = new Student();
-//            student.delete();
-//            student.create();
-//            student.insertData();
-//            student.dataPrintln();
+        AbsTable student = new Student();
+            student.delete();
+            student.create();
+            student.insertData();
+            student.dataPrintln();
 
         // Создание  таблицы группы
 
-//        AbsTable group = new Group();
-//            group.delete();
-//            group.create();
-//            group.insertData();
-//            group.dataPrintln();
+        AbsTable group = new Group();
+            group.delete();
+            group.create();
+            group.insertData();
+            group.dataPrintln();
 
         // Создание таблицы куратор
 
@@ -36,7 +36,6 @@ public class Main {
             curator.create();
             curator.insertData();
             curator.dataPrintln();
-
             }
     }
 
