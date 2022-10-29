@@ -43,10 +43,12 @@ public class Group extends AbsTable {
 
     public void dataPrintln() throws SQLException {
 
-        ResultSet group = iDbExecutor.execute("select * from group_table;", true);
+        ResultSet group = iDbExecutor.execute("SELECT * FROM group_table as g inner JOIN curator as c on g.id_curator = c.id;", true);
         while(group.next()) {
             System.out.println(String.format("id = %d nameGroup = %s idCurator = %d", group.getInt(1),
                     group.getString(2), group.getInt(3)));
+
+            // Вывести список групп с их кураторами - SELECT * FROM group_table as g inner JOIN curator as c on g.id_curator = c.id;
         }
 
         }

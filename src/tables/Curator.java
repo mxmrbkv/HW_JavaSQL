@@ -13,9 +13,9 @@ public class Curator extends AbsTable{
     public Curator(){
         super("curator");
 
-        curator.add(new CuratorList(1, "Jabovna Danna Artemovna"));
-        curator.add(new CuratorList(2, "Tokunova Anna Victorovna"));
-        curator.add(new CuratorList(3, "Uvarov Timofey Andreevich"));
+        curator.add(new CuratorList(23, "Jabovna Danna Artemovna"));
+        curator.add(new CuratorList(24, "Tokunova Anna Victorovna"));
+        curator.add(new CuratorList(25, "Uvarov Timofey Andreevich"));
     }
 
     private List<CuratorList> curator = new ArrayList<>();
@@ -44,7 +44,7 @@ public class Curator extends AbsTable{
     }
 
     public void dataPrintln() throws SQLException {
-        ResultSet curator = iDbExecutor.execute("select * from Curator", true);
+        ResultSet curator = iDbExecutor.execute("select * from curator", true);
         while(curator.next()) {
             System.out.println(String.format("id = %d fio = %s", curator.getInt(1), curator.getString(2)));
         }

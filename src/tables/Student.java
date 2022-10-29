@@ -25,7 +25,7 @@ public class Student extends AbsTable {
         students.add(new StudList(12, "Ulyanova Katrin Olegovna", "Woman", 6689));
         students.add(new StudList(13, "Ukznov Denis Vadimovich", "Man", 6689));
         students.add(new StudList(14, "Uvarov Artev Andreevich", "Man", 6690));
-        students.add(new StudList(15, "Yarigina Yana Maksimovna", "Woman", 7689));
+        students.add(new StudList(15, "Ivanoiva Inna Olegovna", "Woman", 7689));
         }
     private List<StudList> students = new ArrayList<>();
 
@@ -54,18 +54,23 @@ public class Student extends AbsTable {
 
     public void dataPrintln() throws SQLException {
 
-        ResultSet students = iDbExecutor.execute("select * from Student;", true);
+        ResultSet students = iDbExecutor.execute("SELECT * FROM student as s inner JOIN group_table as g on s.id_group = g.id;", true);
         while(students.next()) {
             System.out.println(String.format("id = %d fio = %s sex = %s idGroup = %d", students.getInt(1),
                     students.getString(2), students.getString(3), students.getInt(4)));
 
             // Вывести на экран информацию о всех студентах включая название группы и имя куратора -
-            // Вывести на экран количество студентов -
-            // Вывести студенток -  SELECT * FROM student WHERE sex = 'woman';
-            // Обновить данные по группе сменив куратора -
-            // Вывести список групп с их кураторами -
+            // SELECT * FROM student as s inner JOIN group_table as g on s.id_group = g.id INNER JOIN curator as c on g.id_curator = c.id;
+
+            // Вывести на экран количество студентов - SELECT COUNT(*) FROM student;
+
+            // Вывести студенток - SELECT * FROM student WHERE sex = 'woman';
+
+            // Обновить данные по группе сменив куратора - UPDATE student SET id_group = 7689 WHERE id=1;
+
             // Используя вложенные запросы вывести на экран студентов из определенной группы(поиск по имени группы) -
             // SELECT * FROM student WHERE id_Group = '6689';
+
 
 
 
